@@ -13,7 +13,7 @@ Task Manager — это асинхронное RESTful API для управле
 - Поддержка enum-статусов задач (`CREATED`, `IN_PROGRESS`, `DONE`)
 - Асинхронная работа с базой данных через SQLAlchemy + asyncpg
 - Swagger документация `/docs` и OpenAPI `/openapi.json`
-- Dockerized для лёгкой установки и запуска
+- Docker для лёгкой установки и запуска
 
 ## 📦 Технологии
 
@@ -21,9 +21,9 @@ Task Manager — это асинхронное RESTful API для управле
 - FastAPI
 - SQLAlchemy (async)
 - PostgreSQL
-- Alembic (миграции)
+- Alembic
 - Docker & Docker Compose
-- Pydantic (валидация данных)
+- Pydantic
 
 ## ⚡ Быстрый старт
 
@@ -32,3 +32,101 @@ Task Manager — это асинхронное RESTful API для управле
 ```bash
 git clone <your-repo-url>
 cd task_manager
+```
+2. Создаём .env (пример):
+
+```bash
+# db
+DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/mycooldb
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+POSTGRES_DB=mycooldb
+POSTGRES_HOST=5432
+POSTGRES_PORT=5432
+
+# pgadmin
+PGADMIN_DEFAULT_EMAIL=admin@admin.com
+PGADMIN_DEFAULT_PASSWORD=admin
+
+# ports
+APP_PORT=8000
+PGADMIN_PORT=5050
+HOST_PORT_DB=5432
+POSTGRES_PORT=5432
+```
+
+3. Сборка и запуск через Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+4. Перейти в Swagger UI:
+
+```bash
+http://localhost:8000/docs
+```
+
+## 🧪 Тесты
+Запуск тестов с pytest:
+
+```bash
+pytest
+```
+
+## 📂 Структура проекта
+
+```bash
+taskmanager/
+├── src/
+│   ├── alembic/
+│   │   ├── versions/
+│   │   ├── env.py
+│   │   ├── README
+│   │   └── script.py.mako
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── v1/
+│   │   │   │   ├── routers/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── tasks.py
+│   │   │   │   └── __init__.py
+│   │   │   └── __init__.py
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   └── config.py
+│   │   ├── db/
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   └── session.py
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   └── task.py
+│   │   ├── repositories/
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   └── task_repository.py
+│   │   ├── schemas/
+│   │   │   ├── __init__.py
+│   │   │   └── task.py
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   └── task_service.py
+│   │   ├── tests/
+│   │   │   ├── unit/
+│   │   │   ├── integration/
+│   │   │   └── gauge/
+│   │   ├── main.py
+│   │   └── __init__.py
+│   ├── Dockerfile
+│   ├── alembic.ini
+│   └── __init__.py
+├── docker-compose.yml
+├── requirements.txt
+├── .env
+├── .gitignore
+├── .dockerignore
+└── README.md
+```
+
+
