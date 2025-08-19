@@ -5,17 +5,17 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
-Task Manager — это асинхронное RESTful API для управления задачами, построенное на FastAPI и PostgreSQL с использованием Docker.
+Task Manager is an asynchronous RESTful API for task management, built on FastAPI and PostgreSQL using Docker.
 
-## 🚀 Возможности
+## 🚀 Features
 
-- CRUD операции для задач (создание, чтение, обновление, удаление)
-- Поддержка enum-статусов задач (`CREATED`, `IN_PROGRESS`, `DONE`)
-- Асинхронная работа с базой данных через SQLAlchemy + asyncpg
-- Swagger документация `/docs` и OpenAPI `/openapi.json`
-- Docker для лёгкой установки и запуска
+- CRUD operations for tasks (create, read, update, delete)
+- Support for task status enums (`CREATED`, `IN_PROGRESS`, `DONE`)
+- Asynchronous database operations via SQLAlchemy + asyncpg
+- Swagger documentation at `/docs` and OpenAPI at `/openapi.json`
+- Docker for easy installation and deployment
 
-## 📦 Технологии
+## 📦 Technologies
 
 - Python 3.10+
 - FastAPI
@@ -25,15 +25,15 @@ Task Manager — это асинхронное RESTful API для управле
 - Docker & Docker Compose
 - Pydantic
 
-## ⚡ Быстрый старт
+## ⚡ Quick start
 
-1. Клонируем репозиторий:
+1. Clone the repository:
 
 ```bash
 git clone <your-repo-url>
 cd task_manager
 ```
-2. Создаём .env (пример):
+2. Create .env (example):
 
 ```bash
 # db
@@ -55,26 +55,26 @@ HOST_PORT_DB=5432
 POSTGRES_PORT=5432
 ```
 
-3. Сборка и запуск через Docker Compose:
+3. Build and run with Docker Compose:
 
 ```bash
 docker compose up --build
 ```
 
-4. Перейти в Swagger UI:
+4. Go to Swagger UI:
 
 ```bash
 http://localhost:8000/docs
 ```
 
-## 🧪 Тесты
-Запуск тестов с pytest:
+## 🧪 Tests
+Run pytest:
 
 ```bash
 pytest
 ```
 
-## 📂 Структура проекта
+## 📂 Project structure
 
 ```bash
 taskmanager/
