@@ -14,7 +14,7 @@ async def get_task_service(session=Depends(get_session)) -> TaskService:
     return TaskService(repo)
 
 
-@router.post("/", response_model=TaskReadSchema)
+@router.post("", response_model=TaskReadSchema)
 async def create_task(
     data: TaskCreateSchema,
     service: TaskService = Depends(get_task_service),
@@ -32,7 +32,7 @@ async def get_task(task_id: UUID, service: TaskService = Depends(get_task_servic
     return task
 
 
-@router.get("/", response_model=list[TaskReadSchema])
+@router.get("", response_model=list[TaskReadSchema])
 async def list_tasks(service: TaskService = Depends(get_task_service)):
     return await service.list_tasks()
 
